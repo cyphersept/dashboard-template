@@ -1,9 +1,11 @@
 :root {
   --bg-header: ;
   --light: #fdfcff;
-  --main: #62bbb9;
-  --old-main: #79ccca;
-  --mid: #007484;
+  --main: #35a2a0;
+  --main-hc: #45bdbb;
+  --mid: #087381;
+  --ribbon: #084e88;
+  --dark-bright: #1b3d52;
   --dark: #03324f;
   --darker: #02273d;
   --accent: palegreen;
@@ -14,13 +16,14 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* Default element styles */
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
   color: inherit;
-  outline: none;
   border: none;
+  outline: none;
 }
 
 button {
@@ -40,29 +43,66 @@ html {
   width: 100%;
 }
 
+a:-moz-focusring,
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: 4px solid var(--light);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 4px solid var(--light);
+}
+
+/* Section styles */
 body {
   display: grid;
   grid-template:
     "nav header" min-content
     "nav main" auto
-    / 16rem auto;
+    / min-content auto;
 }
 
 nav {
   grid-area: nav;
-  display: grid;
-  row-gap: 3rem;
-  grid-auto-rows: min-content;
+  width: 16rem;
   color: var(--light);
   background-color: var(--main);
   font-weight: 500;
   z-index: 10;
+  text-wrap: nowrap;
+  overflow-x: visible;
+  transition: 0.1s ease-in-out;
+  transition-property: width, font-size;
+
+  .nav-skip {
+    opacity: 0;
+    background-color: var(--accent2);
+    color: var(--darker);
+    min-height: 3rem;
+    pointer-events: none;
+
+    &:focus-visible {
+      opacity: 100;
+      pointer-events: initial;
+    }
+
+    &:hover {
+      color: var(--light);
+    }
+  }
+
+  .spacer {
+    height: 3rem;
+  }
 
   a {
     font-size: 1.25rem;
     padding: 0.75rem 0;
     padding-left: 1.5rem;
-    width: calc(100% - 1rem);
+    width: 100%;
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
     transition: 0.1s ease;
@@ -75,27 +115,30 @@ nav {
       bottom: 0;
       width: 0;
       height: 0;
-      border-left: 1.5rem solid var(--dark);
+      border-left: 1.5rem solid var(--ribbon);
       border-top: 24.5px solid transparent;
       border-bottom: 24.5px solid transparent;
     }
 
     &:hover {
       padding-left: 2rem;
-      background-color: var(--dark);
+      background-color: var(--ribbon);
       box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
     }
   }
+
   .iconify {
     margin-right: 1.5rem;
     vertical-align: bottom !important;
   }
-  h1 .iconify {
-    margin-right: 1.25rem;
-  }
+
   h1 {
     padding: 1.5rem;
     padding-bottom: 0;
+
+    .iconify {
+      margin-right: 1.25rem;
+    }
   }
 }
 
@@ -105,9 +148,9 @@ header {
   align-items: center;
   gap: 1.5rem;
   grid-template:
-    "search account" min-content
-    "status manage" auto
-    / auto max-content;
+    "search search account" min-content
+    "status manage manage" auto
+    / auto min-content min-content;
 
   background-color: var(--mid);
   color: var(--light);
@@ -115,7 +158,7 @@ header {
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
   z-index: 5;
   font-weight: 500;
-  --btn-hover-color: #a6f5ee;
+  --btn-hover-color: var(--light);
 
   .search {
     grid-area: search;
@@ -129,13 +172,12 @@ header {
 
     input {
       font-size: inherit;
-      box-sizing: border-box;
       border-radius: 1em;
-      padding: 0.25em 0.75em;
-      width: calc(100% - 5em);
+      padding: 0.35em 0.75em 0.15em;
+      width: calc(100% - 4em);
       background-color: var(--main);
       color: var(--light);
-      box-shadow: inset 0px 2px 4px 0px var(--color-shadow);
+      box-shadow: inset 0px 2px 2px 1px rgba(0, 0, 0, 0.45);
     }
 
     input:focus {
@@ -151,7 +193,7 @@ header {
     justify-content: flex-end;
     font-size: 1.25rem;
     gap: 1.25em;
-    h3 {
+    h2 {
       font-size: 1em;
       padding: 0.5rem;
     }
@@ -171,13 +213,16 @@ header {
       font-size: 0.8rem;
     }
   }
+
   .manage {
     grid-area: manage;
     display: flex;
+    justify-content: flex-end;
     gap: 1.5em;
 
     button {
-      background-color: var(--main);
+      background-color: var(--main-hc);
+      color: var(--dark);
       font-weight: 600;
       padding: 0.5rem 1.5rem;
       border-radius: 1rem;
@@ -224,12 +269,13 @@ main {
 
 .container {
   h3 {
-    color: var(--main);
+    color: var(--main-hc);
     margin-bottom: 4px;
   }
 
   p {
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     overflow: hidden;
@@ -252,6 +298,11 @@ main {
       "bar content content" auto
       "bar empty actions" min-content
       / 8px auto min-content;
+  }
+
+  h3 .iconify {
+    font-size: inherit;
+    margin-left: 0.5em;
   }
 
   .bar {
@@ -304,8 +355,12 @@ main {
   li {
     padding: 1rem 0;
   }
+  h3 {
+    color: var(--accent);
+  }
 }
 
+/* Utility class styles */
 .pfp {
   font-size: 2.5rem;
   border-radius: 1em;
@@ -330,5 +385,43 @@ main {
     color: var(--btn-hover-color);
     transform: translateY(0);
     transition-property: ease-out;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media (max-width: 920px) {
+  nav {
+    align-items: center;
+    width: 3.5rem;
+
+    span {
+      font-size: 0px;
+      visibility: hidden;
+    }
+
+    .iconify {
+      visibility: visible;
+    }
+
+    a {
+      padding: 0.75rem;
+      padding-left: 0.875rem;
+    }
+
+    h1 {
+      padding: 0.75rem;
+      padding-top: 1.5rem;
+    }
+  }
+
+  header {
+    padding: 1.5rem;
+    .manage,
+    .account {
+      gap: 0.5rem;
+    }
   }
 }

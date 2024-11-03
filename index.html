@@ -2,55 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="An accessible and customizable vanilla CSS/HTML template for dashboard layouts, free to use with attribution.">
+    <meta name="keywords" content="HTML, CSS, template, cute, dark theme, simple, minimal">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Dashboard Template</title>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
   </head>
   <body>
     <nav>
-      <h1><span class="iconify" data-icon="mdi-view-dashboard"></span>Dashboard</h1>
+      <h1>
+        <span class="iconify" data-icon="mdi-view-dashboard"></span>
+        <span>Dashboard</span>
+      </h1>
+      <a href="#main" class="nav-skip" tabindex="0">
+        <span class="iconify" data-icon="mdi-arrow-right-top-bold"></span>
+        <span>Skip to main</span>
+    </a>
       <ul class="pages">
         <li><a href="">
             <span class="iconify" data-icon="mdi-home"></span>
-            Home
+            <span>Home</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-card-account-details-outline"></span>
-            Profile
+            <span>Profile</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-message-reply"></span>
-            Messages
+            <span>Messages</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-clock"></span>
-            History
+            <span>History</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-file-multiple"></span>
-            Tasks
+            <span>Tasks</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-account-group"></span>
-            Communities
+            <span>Communities</span>
         </a></li>
       </ul>
+      <div class="spacer"></div>
       <ul class="options">
         <li><a href="">
             <span class="iconify" data-icon="mdi-cog"></span>
-            Settings
+            <span>Settings</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-help-box"></span>
-            Support
+            <span>Support</span>
         </a></li>
         <li><a href="">
             <span class="iconify" data-icon="mdi-shield-check"></span>
-            Privacy
+            <span>Privacy</span>
         </a></li>
       </ul>
     </nav>
@@ -59,15 +71,14 @@
         <button type="button" class="icon-btn" aria-label="search">
             <span class="iconify" data-icon="mdi-magnify"></span>
         </button>
-        <label for="searchbar" hidden>Searchbar</label>
-        <input type="text" name="searchbar" id="searchbar">
+        <input type="text" name="searchbar" id="searchbar" aria-label="searchbar">
     </section>
     <section class="account">
-        <button type="button" class="notifications icon-btn" aria-label="Notifications">
+        <button type="button" class="notifications hover-jump-shake-stay icon-btn" aria-label="Notifications">
             <span class="iconify" data-icon="mdi-bell-ring-outline"></span>
         </button>
         <img alt="" src="./flat-lovely-animal-avatar-collection/panda.svg" class="pfp"></img>
-        <h3 class="name">New User</h3>
+        <h2 class="name">New User</h3>
     </section class="account">
     <section class="status">
         <img alt="" src="./flat-lovely-animal-avatar-collection/panda.svg" class="pfp"></img>
@@ -80,14 +91,19 @@
         <button type="button" class="share">Share</button>
     </section>
     </header>
-    <main>
+    <main id="main">
     <section class="cards">
         <h2>Your Projects</h2>
         <ul class="container">
             <li class="card">
                 <div class="bar"></div>
                 <div class="description">
-                    <h3>Some Project</h3>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <h3>
+                            Some Project
+                            <span class="iconify" data-icon="mdi-open-in-new"></span>
+                        </h3>
+                    </a>
                     <p>Sunt dolor ut ipsum consectetur eu culpa ex Lorem voluptate nisi veniam qui. Ut sit nulla dolore quis.</p>
                 </div>
                 <div class="actions">
@@ -105,7 +121,12 @@
             <li class="card">
                 <div class="bar"></div>
                 <div class="description">
-                    <h3>Some Project</h3>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <h3>
+                            Some Project
+                            <span class="iconify" data-icon="mdi-open-in-new"></span>
+                        </h3>
+                    </a>
                     <p>Labore anim elit do eiusmod occaecat fugiat ullamco culpa enim. Commodo ut id officia reprehenderit dolore commodo irure anim ullamco elit sint aliquip et.</p>
                 </div>
                 <div class="actions">
@@ -123,7 +144,12 @@
             <li class="card">
                 <div class="bar"></div>
                 <div class="description">
-                    <h3>Some Project</h3>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <h3>
+                            Some Project
+                            <span class="iconify" data-icon="mdi-open-in-new"></span>
+                        </h3>
+                    </a>
                     <p>Reprehenderit cupidatat enim nostrud ipsum. Qui mollit veniam velit esse pariatur qui ut fugiat.</p>
                 </div>
                 <div class="actions">
@@ -141,7 +167,12 @@
             <li class="card">
                 <div class="bar"></div>
                 <div class="description">
-                    <h3>Some Project</h3>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <h3>
+                            Some Project
+                            <span class="iconify" data-icon="mdi-open-in-new"></span>
+                        </h3>
+                    </a>
                     <p>Esse fugiat nulla exercitation quis et veniam ad sunt. Consequat commodo officia nulla esse voluptate exercitation pariatur aliquip amet et deserunt sit duis aute.</p>
                 </div>
                 <div class="actions">
@@ -159,7 +190,12 @@
             <li class="card">
                 <div class="bar"></div>
                 <div class="description">
-                    <h3>Some Project</h3>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <h3>
+                            Some Project
+                            <span class="iconify" data-icon="mdi-open-in-new"></span>
+                        </h3>
+                    </a>
                     <p>Est sint deserunt adipisicing aliquip id eiusmod anim laborum nulla consequat labore voluptate minim. Proident aliqua reprehenderit quis aliquip adipisicing adipisicing. Officia minim ullamco incididunt sit exercitation aliqua consequat ullamco. Consectetur elit ipsum incididunt commodo qui nulla nulla sit cillum ipsum.</p>
                 </div>
                 <div class="actions">
@@ -177,7 +213,12 @@
             <li class="card">
                 <div class="bar"></div>
                 <div class="description">
-                    <h3>Some Project</h3>
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                        <h3>
+                            Some Project
+                            <span class="iconify" data-icon="mdi-open-in-new"></span>
+                        </h3>
+                    </a>
                     <p>In culpa velit pariatur aliquip officia sint aliquip exercitation id. Velit veniam magna culpa ullamco culpa eiusmod.</p>
                 </div>
                 <div class="actions">
@@ -239,3 +280,10 @@
     </main>
   </body>
 </html>
+
+<script>
+    function dummyClick() {
+        console.log("Button clicked")
+    }
+    document.querySelectorAll("button").forEach(btn => btn.addEventListener("click", dummyClick));
+</script>
